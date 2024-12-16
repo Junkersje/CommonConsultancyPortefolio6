@@ -1,0 +1,174 @@
+ body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif; 
+  background-color: #fdfbf3; 
+  color: #002f5e; 
+  overflow: hidden; 
+}
+
+header {
+  text-align: center;
+  padding: 10px;
+  background-color: darkblue;
+}
+
+header h1 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 60px); 
+}
+
+#canvasH1 {
+  font-size: 18px;
+  color: black;
+  margin-bottom: 30px;
+}
+
+.left-container {
+  flex: 1.5;
+  padding: 20px;
+  background-color: #FFFDD0; 
+    color: #ffffff; 
+    line-height: 1.6;
+    font-size: 18px;
+  overflow-y: hidden; 
+}
+
+.left-container h1 {
+    font-size: 48px;
+    color: #ffce00; 
+    margin-bottom: 30px;
+  }
+  .left-container p {
+    margin: 20px 0;
+    font-weight: 300;
+  }
+
+
+
+.right-container {
+  flex: 1;
+  padding: 20px;
+  position: relative; 
+  display: flex;
+  background-color: darkblue; 
+  color: white;
+  line-height: 2;
+  font-size: 18px;
+  overflow-y: auto; /* Allow scrolling if text content is too long */
+}
+.right-container h2 {
+    color: #ffce00;
+}
+
+#myChart {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.indicator {
+    position: relative; 
+    width: 100%; 
+    text-align: center
+}
+
+#highlight-box {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 15px;
+  position: absolute;
+  left: 30px;
+  top: -5px;
+  background-color: blue;
+  font-weight: bold;
+  z-index: 10;
+}
+
+#argument1 {
+    margin: 0;
+    color: #ffce00;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; 
+}
+
+
+#bracket {
+  position: absolute;
+  top: 80px;
+  left: 35px;
+  width: 280px;
+  height: 20px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-radius: 15px 15px 0 0;
+}
+
+.bracket-extra {
+  position: absolute;
+  top: -10px;
+  left: 45%;
+  font-size: 40px;
+} 
+
+/* bracket 2 */
+.indicator2 {
+    position: relative; 
+    width: 100%; 
+    text-align: center
+}
+
+#highlight-box2 {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 15px;
+  position: absolute;
+  left: 450px;
+  top: 100px;
+  background-color: blue;
+  font-weight: bold;
+  z-index: 10;
+}
+
+#argument2 {
+    margin: 0;
+    color: #ffce00;
+    text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; 
+}
+
+
+#bracket2 {
+  position: absolute;
+  top: 185px;
+  left: 315px;
+  width: 555px;
+  height: 20px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-radius: 15px 15px 0 0;
+}
+
+.bracket-extra2 {
+  position: absolute;
+  top: -10px;
+  left: 45%;
+  font-size: 40px;
+} 

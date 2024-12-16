@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portefolio 6 Common Consultancy</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Heatmap som ikke bruges
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+  -->
+</head>
+<body>
+  <header>
+    <h1>Får lange posts mindre engagement?</h1>
+  </header>
+  
+  <div class="container">
+    <div class="left-container">
+     <h2 id="canvasH1">Gennemsnittet af interaktioner baseret på længden af posts</h2>
+     <div class="indicator">
+      <!-- Bracket textbox -->
+      <div id="highlight-box">
+        <p1 id="argument1">468 interaktioner i gennemsnit</p1> <br> på posts kortere end 7 linjer
+      </div>
+      <!-- Indicator Bracket -->
+      <div id="bracket">
+        <div class="bracket-extra">
+        </div>
+      </div>
+      </div>
+      <!-- bracket 2 -->
+      <div class="indicator2">
+        <!-- Textbox -->
+        <div id="highlight-box2">
+          <p1 id="argument2">324 interaktioner i gennemsnit</p1> <br> på posts længere end 7 linjer
+        </div>
+        <div id="bracket2">
+          <div class="bracket-extra2">
+          </div>
+        </div>
+        </div>
+  
+  <!-- Chart Container -->
+  <canvas id="myChart" style="margin-top: 100px;"></canvas>
+
+    </div>
+    <div class="right-container">
+      <div class="data-box">
+        <h2>Mindre tekst - Mere opmærksomhed</h2>
+        <p>Længden af et post på online medier, kan være en afgørende faktor for mængden af engagement der opnås på et post.
+          <br>
+          De korte posts får generelt mere opmærksomhed end de lange gør når man kigger på online posts.
+          <br>
+          <br>
+          Faktisk er der i gennemsnit 
+          <p style="color: #ffce00; font-weight: bolder; margin-bottom: 1px; margin-top: -15px;">44% flere interaktioner på posts kortere end 7 linjer</p> 
+          end på posts længere end 7 linjer.
+          <br>
+          <br>
+
+        </p>
+        
+      </div>
+    </div>
+  </div>
+  
+
+
+  <script>
+  let opinionChart = new Chart(myChart, {
+    type: 'line',
+    data: {
+      labels: ['1 Linje', '2 Linjer', '3 Linjer', '4 Linjer', '5 Linjer', '6 Linjer', '7 Linjer', '8 Linjer', '9 Linjer', '10 Linjer', '11 Linjer', '12 Linjer', '13 Linjer', '14 Linjer', '15 Linjer', '16 Linjer', '17 Linjer', '18 Linjer', '19 Linjer'],
+        datasets: [{
+            data: [565, 491, 422, 460, 428, 453, 450, 334, 310, 380, 224, 306, 334, 325, 250, 385, 287, 312, 244],
+            backgroundColor: [
+                'rgba(0, 0, 255, 0.5)'
+            ],
+            
+            borderWidth: 2,
+            borderColor: 'rgba(0, 0, 255, 0.5)',
+            borderWidth: 5,
+            pointRadius: 0,
+            segment: {
+                borderColor: ctx => {
+                    // Color segments of the line graph
+                    const index = ctx.p0DataIndex; // Starting index of the segment
+                    return index < 6 ? 'red' : 'rgba(54, 162, 235, 0.8)'; // Red for first 6 points, blue for the rest
+                }
+            }
+        }]
+    },
+    options:{
+      plugins: {
+          legend: {
+            display: false
+          }
+        },
+      scales: { // Remove grid lines
+          x: {
+            grid: {
+              display: false
+            }
+          },
+          y: {
+            grid: {
+              display: false
+            }
+          }
+        }
+    }
+});
+  </script>
+
+  <!--
+  <div class="button-row">
+    <div class="dropdown-container">
+      <button onclick="moveToCountry('Overview'), loadIndexHeatmap()">Overview of Europe</button>
+      <div class="dropdown" id="dropdown-overview">
+        <button onclick="loadIndexHeatmap()">Show Eu For</button>
+        <button onclick="loadIndexHeatmap()">Show Eu Neutral</button>
+        <button onclick="loadIndexHeatmap()">Show Eu Imod</button>
+      </div>
+    </div>
+    <div class="dropdown-container">
+      <button onclick="moveToCountry('Denmark'), loadDkAllHeatmap()">Overview Denmark</button>
+      <div class="dropdown" id="dropdown-denmark">
+        <button onclick="loadDkForHeatmap()">Load DK For Heatmap</button>
+        <button onclick="loadDkImodHeatmap()">Load DK Imod Heatmap</button>
+        <button onclick="loadDkAllHeatmap()">Load Index Heatmap</button>
+      </div>
+    </div>
+    <div class="dropdown-container">
+      <button onclick="moveToCountry('Germany'), loadGermanyAllHeatmap()">Overview Germany</button>
+      <div class="dropdown" id="dropdown-germany">
+        <button onclick="loadGermanyForHeatmap()">Load Germany For Heatmap</button>
+        <button onclick="loadGermanyImodHeatmap()">Load Germany Imod Heatmap</button>
+        <button onclick="loadGermanyAllHeatmap()">Load Index Heatmap</button>
+      </div>
+    </div>
+    <div class="dropdown-container">
+      <button onclick="moveToCountry('France'), loadFranceAllHeatmap()">Overview France</button>
+      <div class="dropdown" id="dropdown-france">
+        <button onclick="loadFranceForHeatmap()">Load France For Heatmap</button>
+        <button onclick="loadFranceImodHeatmap()">Load France Imod Heatmap</button>
+        <button onclick="loadFranceAllHeatmap()">Load Index Heatmap</button>
+      </div>
+    </div>
+    <div class="dropdown-container">
+      <button onclick="moveToCountry('Malta'), loadMaltaAllHeatmap()">Overview Malta</button>
+      <div class="dropdown" id="dropdown-malta">
+        <button onclick="loadMaltaForHeatmap()">Load Malta For Heatmap</button>
+        <button onclick="loadMaltaImodHeatmap()">Load Malta Imod Heatmap</button>
+        <button onclick="loadMaltaAllHeatmap()">Load Index Heatmap</button>
+      </div>
+    </div>
+    <div class="dropdown-container">
+      <button onclick="moveToCountry('Wales'), loadWalesAllHeatmap()">Overview Wales</button>
+      <div class="dropdown" id="dropdown-wales">
+        <button onclick="loadWalesForHeatmap()">Load Wales For Heatmap</button>
+        <button onclick="loadWalesImodHeatmap()">Load Wales Imod Heatmap</button>
+        <button onclick="loadWalesAllHeatmap()">Load Index Heatmap</button>
+      </div>
+    </div>
+    <div class="dropdown-container">
+      <button onclick="moveToCountry('Schweiz'), loadSchweizAllHeatmap()">Overview Schweiz</button>
+      <div class="dropdown" id="dropdown-schweiz">
+        <button onclick="loadSchweizForHeatmap()">Load Schweiz For Heatmap</button>
+        <button onclick="loadSchweizImodHeatmap()">Load Schweiz Imod Heatmap</button>
+        <button onclick="loadSchweizAllHeatmap()">Load Index Heatmap</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="map"></div>
+    <img src="loading-gif.gif" alt="Loading..." class="loading" id="loading">
+    <div class="data-box">
+      <h2>Chart box, for det land i fokus ...tbc... </h2>
+      <p>Brug samme fetchede values fra db, så du ikke exe query dobbelt!</p>
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+  -->
+<!--    End of testing section    -->
+<!-- TODO replacement:            <script src="../chartController.js"></script>              -->   
+
+
+<!--
+<script src="heatmap.js"></script>
+<script src="../heatmapController.js">
+</script>-->
+</body>
+</html>
